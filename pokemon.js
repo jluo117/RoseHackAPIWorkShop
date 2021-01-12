@@ -13,6 +13,7 @@ async function getPokemon(){
         	}
 		});
   console.log(buildTable)
+
   }
 
   var pokemon = buildTable[Math.floor(Math.random() * buildTable.length)]
@@ -20,9 +21,10 @@ async function getPokemon(){
   document.getElementById("Pokemon").src = pokemon["image"]
   choosenPokemon = pokemon["name"]
   guessed = false
+  document.getElementById("userGuess").value = ''
 }
 function compareGuess(userGuess){
-
+  userGuess = userGuess.replace(/\s/g, '');
   console.log(choosenPokemon)
   console.log(userGuess)
   if (guessed){
