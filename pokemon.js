@@ -12,8 +12,8 @@ async function getPokemon(){
         		buildTable.push(newPokemon)
         	}
 		});
-  console.log(buildTable)
 
+  document.getElementById("userGuess").value =''
   }
 
   var pokemon = buildTable[Math.floor(Math.random() * buildTable.length)]
@@ -21,7 +21,6 @@ async function getPokemon(){
   document.getElementById("Pokemon").src = pokemon["image"]
   choosenPokemon = pokemon["name"]
   guessed = false
-  document.getElementById("userGuess").value = ''
 }
 function compareGuess(userGuess){
   userGuess = userGuess.replace(/\s/g, '');
