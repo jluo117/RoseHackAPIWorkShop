@@ -1,7 +1,7 @@
 var buildTable = []
 var guessed = false
 var score = 0
-var choosenPokemon = ""
+var choosenPokemon = "NOT A Pokemon"
 async function getPokemon(){
   if (buildTable.length == 0){
     await $.getJSON('https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json', function(data) {
@@ -33,7 +33,12 @@ function compareGuess(userGuess){
     guessed = true
     score++
     console.log(score)
-
+    getPokemon()
+    document.getElementById("userGuess").value =''
+    document.getElementById("score").style.color = "green";
+  }
+  else {
+    document.getElementById("score").style.color = "red";
   }
   document.getElementById("score").innerHTML = String(score)
 }
