@@ -8,17 +8,31 @@ async function getPokemon(){
         	var pokemons = (data["pokemon"]);
         	for (var pokemonID = 0; pokemonID < pokemons.length; pokemonID ++){
             var currentPokemon = pokemons[pokemonID]
-        		buildTable.push((currentPokemon["name"],currentPokemon["img"]))
+            let newPokemon = {name:currentPokemon["name"],image:currentPokemon["img"] }
+        		buildTable.push(newPokemon)
         	}
 		});
+  console.log(buildTable)
   }
+
   var pokemon = buildTable[Math.floor(Math.random() * buildTable.length)]
-  document.getElementById("Pokemon").src = pokemon[1]
-  choosenPokemon = pokemon[0]
+  console.log(pokemon)
+  document.getElementById("Pokemon").src = pokemon["image"]
+  choosenPokemon = pokemon["name"]
+  guessed = false
 }
 function compareGuess(userGuess){
-  if (userGuess == choosenPokemon){
-    score++
+
+  console.log(choosenPokemon)
+  console.log(userGuess)
+  if (guessed){
+    return
   }
-  document.getElementById("score") = String(score)
+  if (String(userGuess) == choosenPokemon){
+    guessed = true
+    score++
+    console.log(score)
+
+  }
+  document.getElementById("score").innerHTML = String(score)
 }
